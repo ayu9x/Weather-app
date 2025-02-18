@@ -1,0 +1,111 @@
+/* General Weather Container */
+.weather-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+}
+
+/* Temperature Styling */
+.temperature {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Weather Description */
+.description {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 10px 0;
+  text-transform: capitalize;
+}
+
+/* Weather Icon */
+.weather-icon img {
+  width: 120px;
+  height: 120px;
+  transition: transform 0.3s ease-in-out;
+}
+.weather-icon img:hover {
+  transform: scale(1.1);
+}
+
+/* Weather Details Box */
+.weather-details {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+/* Individual Detail Rows */
+.weather-details div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.weather-details div:last-child {
+  border-bottom: none;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .weather-info {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .temperature {
+    font-size: 3rem;
+  }
+
+  .weather-icon img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .description {
+    font-size: 1.2rem;
+  }
+  .weather-info {
+    padding: 20px;
+  }
+  
+  .temperature {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+  }
+  
+  .weather-icon img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .weather-details {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+  }
+  .weather-details div {
+    font-size: 1rem;
+  }
+}
