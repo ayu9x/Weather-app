@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "WeatherScope",
+  "name": "WeatherScope – Real-time Weather",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#667eea",
+  "background_color": "#0f0f1a",
+  "description": "Beautiful real-time weather forecasts, air quality monitoring, and 5-day forecasts."
 }

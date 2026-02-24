@@ -1,22 +1,32 @@
-FROM node:16-alpine as build
+## -----------------------------------------------------------
+## Stage 1: Build the React app
+## -----------------------------------------------------------
+FROM node:18-alpine AS build
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm ci
+# Install dependencies first (layer caching)
+COPY package.json package-lock.json* ./
+RUN npm ci --silent
 
+# Copy source and build
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve the built app with Nginx
+## -----------------------------------------------------------
+## Stage 2: Serve with Nginx
+## -----------------------------------------------------------
 FROM nginx:alpine
 
-# Copy the build output
+# Copy custom nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy built assets
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Copy custom nginx config if needed
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 EXPOSE 80
+
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD wget -qO- http://localhost/ || exit 1
 
 CMD ["nginx", "-g", "daemon off;"]
