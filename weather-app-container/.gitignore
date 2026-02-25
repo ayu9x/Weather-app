@@ -1,0 +1,44 @@
+# Dependencies
+frontend/node_modules/
+backend/venv/
+
+# Environment variables
+.env
+backend/.env
+frontend/.env
+
+# Build outputs
+frontend/build/
+frontend/.cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Docker
+.dockerignore
+
+# Testing
+frontend/coverage/

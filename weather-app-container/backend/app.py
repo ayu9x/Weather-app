@@ -3,7 +3,7 @@ from flask_cors import CORS
 import os
 from dotenv import load_dotenv
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 import logging
 
 # Load environment variables
@@ -28,7 +28,7 @@ CACHE_DURATION = 600  # 10 minutes
 def get_cached(key):
     if key in _cache:
         data, timestamp = _cache[key]
-        if (datetime.now() - timestamp).seconds < CACHE_DURATION:
+        if (datetime.now() - timestamp).total_seconds() < CACHE_DURATION:
             return data
         del _cache[key]
     return None
@@ -162,7 +162,7 @@ def get_forecast():
                     })
 
                 # Aggregate daily min/max
-                date_key = datetime.utcfromtimestamp(item['dt']).strftime('%Y-%m-%d')
+                date_key = datetime.fromtimestamp(item['dt'], tz=timezone.utc).strftime('%Y-%m-%d')
                 if date_key not in daily_map:
                     daily_map[date_key] = {
                         'dt': item['dt'],

@@ -7,10 +7,15 @@ WORKDIR /app
 
 # Install dependencies first (layer caching)
 COPY package.json package-lock.json* ./
-RUN npm ci --silent
+RUN npm install
 
 # Copy source and build
 COPY . .
+
+# Set API URL to empty so requests use relative paths through nginx proxy
+ARG REACT_APP_API_URL=""
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+
 RUN npm run build
 
 ## -----------------------------------------------------------

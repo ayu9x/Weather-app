@@ -17,15 +17,16 @@ services:
       start_period: 10s
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        REACT_APP_API_URL: ""
     container_name: weatherscope-web
     ports:
       - "80:80"
     depends_on:
       backend:
         condition: service_healthy
-    environment:
-      - REACT_APP_API_URL=http://localhost:5000
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost/"]
